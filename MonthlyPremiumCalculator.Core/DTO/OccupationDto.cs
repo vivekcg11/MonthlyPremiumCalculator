@@ -1,3 +1,4 @@
+namespace MonthlyPremiumCalculator.Core.DTO;
 public class OccupationDto
 {
     public string Name { get; set; }
