@@ -1,2 +1,4 @@
 <Solution>
+  <Project Path="MonthlyPremiumCalculator.Core/MonthlyPremiumCalculator.Core.csproj" />
+  <Project Path="MonthlyPremiumCalculator.Infrastructure/MonthlyPremiumCalculator.Infrastructure.csproj" />
 </Solution>

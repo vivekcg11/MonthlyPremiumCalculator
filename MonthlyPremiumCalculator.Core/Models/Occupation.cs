@@ -1,3 +1,5 @@
+namespace MonthlyPremiumCalculator.Core.Models;
+
 public class Occupation
 {
     public string Name { get; set; }
