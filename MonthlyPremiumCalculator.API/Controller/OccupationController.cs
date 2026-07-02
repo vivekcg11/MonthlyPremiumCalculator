@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MonthlyPremiumCalculator.Core.DTO;
+using MonthlyPremiumCalculator.Core.Interfaces;
+
+namespace MonthlyPremiumCalculator.API.Controller;
 
 [ApiController]
 [Route("api/[controller]")]

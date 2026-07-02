@@ -6,10 +6,13 @@ using MonthlyPremiumCalculator.Core.DTO;
 public class PremiumController : ControllerBase
 {
     private readonly IPremiumService _service;
+    private readonly ILogger<PremiumController> _logger;
     public PremiumController(
-        IPremiumService service)
+        IPremiumService service,
+        ILogger<PremiumController> logger)
     {
         _service = service;
+        _logger = logger;
     }
 
     [HttpPost("calculate")]
@@ -21,7 +24,11 @@ public class PremiumController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        
+
+        _logger.LogInformation(
+            "Premium calculation request received for {Name}",
+            request.Name);
+
         var premium =
             _service.CalculatePremium(
                 request.DeathSumInsured,
@@ -33,9 +40,16 @@ public class PremiumController : ControllerBase
             {
                 MonthlyPremium = premium
             };
-
+        _logger.LogInformation(
+            "Premium calculated successfully. Amount: {Premium}",
+            premium);
 
         return Ok(response);
     }
     
+    [HttpGet("exception")]
+    public IActionResult TestException()
+    {
+        throw new Exception("Testing Middleware");
+    }
 }

@@ -1,10 +1,18 @@
 using MonthlyPremiumCalculator.Core.Interfaces;
 using MonthlyPremiumCalculator.Core.Models;
+using Microsoft.Extensions.Logging;
 
 namespace MonthlyPremiumCalculator.Infrastructure;
 
 public class OccupationRepository : IOccupationRepository
 {
+    private readonly ILogger<OccupationRepository> _logger;
+
+    public OccupationRepository(
+        ILogger<OccupationRepository> logger)
+    {
+        _logger = logger;
+    }
     private readonly List<Occupation> _occupations =
     [
         new()
@@ -64,6 +72,10 @@ public class OccupationRepository : IOccupationRepository
 
     public Occupation GetOccupation(string occupationName)
     {
+        _logger.LogInformation(
+            "Fetching occupation {Occupation}",
+            occupationName);
+            
         return _occupations.FirstOrDefault(
             x => x.Name.Equals(
                 occupationName,
