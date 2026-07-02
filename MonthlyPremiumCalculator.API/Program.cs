@@ -1,6 +1,17 @@
 using MonthlyPremiumCalculator.API.Middleware;
 using MonthlyPremiumCalculator.Core.Interfaces;
 using MonthlyPremiumCalculator.Infrastructure;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File(
+        Path.Combine(
+        Directory.GetCurrentDirectory(),
+        "Logs",
+        "log-.txt"),
+        rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 

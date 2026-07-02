@@ -1,11 +1,10 @@
-using Microsoft.Extensions.Logging;
 using MonthlyPremiumCalculator.Core.Interfaces;
 
 public class PremiumService : IPremiumService
 {
     private readonly IOccupationRepository _repository;
 
-    public PremiumService(IOccupationRepository repository, ILogger<PremiumService> logger)
+    public PremiumService(IOccupationRepository repository)
     {
         _repository = repository;
     }
@@ -15,6 +14,16 @@ public class PremiumService : IPremiumService
     int age,
     string occupation)
     {
+        if (deathCover <= 0)
+        {
+            return 0;
+        }
+
+        if (age <= 0)
+        {
+            throw new ArgumentException(
+                "Age must be greater than zero.");
+        }
 
         var occupationData =
             _repository.GetOccupation(occupation);

@@ -3,4 +3,5 @@
   <Project Path="MonthlyPremiumCalculator.Core/MonthlyPremiumCalculator.Core.csproj" />
   <Project Path="MonthlyPremiumCalculator.Infrastructure/MonthlyPremiumCalculator.Infrastructure.csproj" />
   <Project Path="MonthlyPremiumCalculator.MVC/MonthlyPremiumCalculator.MVC.csproj" />
+  <Project Path="MonthlyPremiumCalculator.Tests/MonthlyPremiumCalculator.Tests.csproj" />
 </Solution>
