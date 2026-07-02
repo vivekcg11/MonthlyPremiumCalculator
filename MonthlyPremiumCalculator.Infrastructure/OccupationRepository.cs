@@ -13,6 +13,7 @@ public class OccupationRepository : IOccupationRepository
     {
         _logger = logger;
     }
+
     private readonly List<Occupation> _occupations =
     [
         new()
@@ -75,7 +76,7 @@ public class OccupationRepository : IOccupationRepository
         _logger.LogInformation(
             "Fetching occupation {Occupation}",
             occupationName);
-            
+
         return _occupations.FirstOrDefault(
             x => x.Name.Equals(
                 occupationName,
