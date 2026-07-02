@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Logging;
 using Moq;
 using MonthlyPremiumCalculator.Core.Models;
 using MonthlyPremiumCalculator.Core.Interfaces;
