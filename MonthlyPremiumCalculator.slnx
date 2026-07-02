@@ -2,4 +2,5 @@
   <Project Path="MonthlyPremiumCalculator.API/MonthlyPremiumCalculator.API.csproj" />
   <Project Path="MonthlyPremiumCalculator.Core/MonthlyPremiumCalculator.Core.csproj" />
   <Project Path="MonthlyPremiumCalculator.Infrastructure/MonthlyPremiumCalculator.Infrastructure.csproj" />
+  <Project Path="MonthlyPremiumCalculator.MVC/MonthlyPremiumCalculator.MVC.csproj" />
 </Solution>

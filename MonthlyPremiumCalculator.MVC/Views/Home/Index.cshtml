@@ -1,0 +1,299 @@
+﻿@{
+    ViewData["Title"] = "Monthly Premium Calculator";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3>Monthly Premium Calculator</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form id="premiumForm">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text"
+                               id="name"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Age Next Birthday <span class="text-danger">*</span>
+                        </label>
+                        <input type="number"
+                               id="age"
+                               class="form-control"
+                               min="1"
+                               required />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Date Of Birth (MM/YYYY)
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input type="text"
+                               id="dob"
+                               class="form-control"
+                               placeholder="MM/YYYY"
+                               required />
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Occupation <span class="text-danger">*</span>
+                        </label>
+
+                        <select id="occupation"
+                                class="form-select"
+                                required>
+                            <option value="">
+                                -- Select Occupation --
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Death Sum Insured
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <input type="number"
+                               id="deathSumInsured"
+                               class="form-control"
+                               min="1"
+                               required />
+                    </div>
+
+                </div>
+
+            </form>
+
+            <hr />
+
+            <div class="alert alert-success">
+
+                <h4>
+                    Monthly Premium :
+                    <span id="premiumAmount">
+                        ₹0.00
+                    </span>
+                </h4>
+
+            </div>
+
+            <div id="errorMessage"
+                 class="alert alert-danger d-none">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+<script>
+
+    const occupationApi =
+        "http://localhost:5062/api/occupation";
+
+    const premiumApi =
+        "http://localhost:5062/api/premium/calculate";
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        loadOccupations();
+
+        document
+            .getElementById("occupation")
+            .addEventListener("change", calculatePremium);
+
+    });
+
+    async function loadOccupations() {
+
+        try {
+
+            const response = await fetch(occupationApi);
+
+            const occupations = await response.json();
+            //alert(response.json());
+            const dropdown =
+                document.getElementById("occupation");
+
+            occupations.forEach(item => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = item.name;
+                option.text = item.name;
+
+                dropdown.appendChild(option);
+            });
+
+        }
+        catch (error) {
+
+            showError(
+                "Failed to load occupations."
+            );
+
+            console.error(error);
+        }
+    }
+
+    async function calculatePremium() {
+
+        hideError();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        const request = {
+
+            name:
+                document.getElementById("name").value,
+
+            age:
+                parseInt(
+                    document.getElementById("age").value),
+
+            dateOfBirth:
+                document.getElementById("dob").value,
+
+            occupation:
+                document.getElementById("occupation").value,
+
+            deathSumInsured:
+                parseFloat(
+                    document.getElementById(
+                        "deathSumInsured").value)
+        };
+
+        try {
+
+            const response = await fetch(
+                premiumApi,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(request)
+                });
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Premium calculation failed.");
+            }
+
+            
+            const result =
+                await response.json();
+
+
+            document.getElementById(
+                "premiumAmount"
+            ).innerText =
+                result.monthlyPremium.toFixed(2);
+                    
+
+        }
+        catch (error) {
+
+            showError(error.message);
+
+            console.error(error);
+        }
+    }
+
+    function validateForm() {
+
+        const name =
+            document.getElementById("name").value;
+
+        const age =
+            document.getElementById("age").value;
+
+        const dob =
+            document.getElementById("dob").value;
+
+        const occupation =
+            document.getElementById("occupation").value;
+
+        const deathSumInsured =
+            document.getElementById(
+                "deathSumInsured").value;
+
+        if (!name ||
+            !age ||
+            !dob ||
+            !occupation ||
+            !deathSumInsured) {
+
+            showError(
+                "All fields are mandatory.");
+
+            return false;
+        }
+
+        const dobRegex =
+            /^(0[1-9]|1[0-2])\/\d{4}$/;
+
+        if (!dobRegex.test(dob)) {
+
+            showError(
+                "Date Of Birth must be in MM/YYYY format.");
+
+            return false;
+        }
+
+        return true;
+    }
+
+    function showError(message) {
+
+        const errorDiv =
+            document.getElementById(
+                "errorMessage");
+
+        errorDiv.innerText = message;
+
+        errorDiv.classList.remove("d-none");
+    }
+
+    function hideError() {
+
+        document
+            .getElementById("errorMessage")
+            .classList.add("d-none");
+    }
+
+</script>
+}

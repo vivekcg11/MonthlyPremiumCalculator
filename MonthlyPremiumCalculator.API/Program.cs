@@ -17,6 +17,15 @@ builder.Logging.AddDebug();
 builder.Services.AddScoped<IOccupationRepository,OccupationRepository>();
 
 builder.Services.AddScoped<IPremiumService,PremiumService>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("AllowAll");
 app.MapControllers();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseHttpsRedirection();
