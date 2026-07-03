@@ -16,9 +16,7 @@ public class GlobalExceptionMiddleware
         _logger = logger;
     }
 
-    /// <summary>
-    /// Handles all unhandled exceptions globally.
-    /// </summary>
+    // Handles all unhandled exceptions globally.
     public async Task InvokeAsync(HttpContext context)
     {
         try

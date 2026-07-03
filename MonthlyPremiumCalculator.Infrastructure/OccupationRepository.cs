@@ -8,12 +8,13 @@ public class OccupationRepository : IOccupationRepository
 {
     private readonly ILogger<OccupationRepository> _logger;
 
-    public OccupationRepository(
-        ILogger<OccupationRepository> logger)
+    //Constructor injection of the ILogger<OccupationRepository> dependency
+    public OccupationRepository(ILogger<OccupationRepository> logger)
     {
         _logger = logger;
     }
 
+    // Hardcoded list of occupations with their respective factors and ratings
     private readonly List<Occupation> _occupations =
     [
         new()
@@ -66,11 +67,13 @@ public class OccupationRepository : IOccupationRepository
         }
     ];
 
+    // Fetches the list of all occupations
     public IEnumerable<Occupation> GetOccupations()
     {
         return _occupations;
     }
 
+    //Fetches a specific occupation based on the provided occupation name
     public Occupation GetOccupation(string occupationName)
     {
         _logger.LogInformation(

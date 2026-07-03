@@ -10,12 +10,13 @@ public class OccupationController : ControllerBase
 {
     private readonly IOccupationRepository _repo;
 
-    public OccupationController(
-        IOccupationRepository repo)
+    //Constructor injection of the IOccupationRepository dependency
+    public OccupationController(IOccupationRepository repo)
     {
         _repo = repo;
     }
 
+    //Fetching the list of occupations from the repository and returning it as a response
     [HttpGet]
     public IActionResult GetOccupations()
     {

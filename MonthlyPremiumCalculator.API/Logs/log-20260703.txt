@@ -1,0 +1,62 @@
+2026-07-03 08:34:14.891 +05:30 [INF] Now listening on: http://localhost:5062
+2026-07-03 08:34:14.938 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-03 08:34:14.939 +05:30 [INF] Hosting environment: Development
+2026-07-03 08:34:14.941 +05:30 [INF] Content root path: C:\Vivek\ProjectCode\MonthlyPremiumCalculator\MonthlyPremiumCalculator.API
+2026-07-03 08:34:32.260 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5062/api/occupation - null null
+2026-07-03 08:34:32.334 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-07-03 08:34:32.338 +05:30 [INF] Executing endpoint 'MonthlyPremiumCalculator.API.Controller.OccupationController.GetOccupations (MonthlyPremiumCalculator.API)'
+2026-07-03 08:34:32.359 +05:30 [INF] Route matched with {action = "GetOccupations", controller = "Occupation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetOccupations() on controller MonthlyPremiumCalculator.API.Controller.OccupationController (MonthlyPremiumCalculator.API).
+2026-07-03 08:34:32.377 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[MonthlyPremiumCalculator.Core.Models.Occupation, MonthlyPremiumCalculator.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[MonthlyPremiumCalculator.Core.DTO.OccupationDto, MonthlyPremiumCalculator.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-03 08:34:32.440 +05:30 [INF] Executed action MonthlyPremiumCalculator.API.Controller.OccupationController.GetOccupations (MonthlyPremiumCalculator.API) in 68.9178ms
+2026-07-03 08:34:32.443 +05:30 [INF] Executed endpoint 'MonthlyPremiumCalculator.API.Controller.OccupationController.GetOccupations (MonthlyPremiumCalculator.API)'
+2026-07-03 08:34:32.449 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5062/api/occupation - 200 null application/json; charset=utf-8 191.4391ms
+2026-07-03 08:34:32.483 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5062/favicon.ico - null null
+2026-07-03 08:34:32.492 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5062/favicon.ico - 404 0 null 9.8115ms
+2026-07-03 08:34:32.498 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5062/favicon.ico, Response status code: 404
+2026-07-03 08:35:20.936 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5062/api/occupation - null null
+2026-07-03 08:35:20.946 +05:30 [INF] CORS policy execution successful.
+2026-07-03 08:35:20.949 +05:30 [INF] Executing endpoint 'MonthlyPremiumCalculator.API.Controller.OccupationController.GetOccupations (MonthlyPremiumCalculator.API)'
+2026-07-03 08:35:20.951 +05:30 [INF] Route matched with {action = "GetOccupations", controller = "Occupation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetOccupations() on controller MonthlyPremiumCalculator.API.Controller.OccupationController (MonthlyPremiumCalculator.API).
+2026-07-03 08:35:20.954 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[MonthlyPremiumCalculator.Core.Models.Occupation, MonthlyPremiumCalculator.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[MonthlyPremiumCalculator.Core.DTO.OccupationDto, MonthlyPremiumCalculator.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-03 08:35:20.957 +05:30 [INF] Executed action MonthlyPremiumCalculator.API.Controller.OccupationController.GetOccupations (MonthlyPremiumCalculator.API) in 3.6947ms
+2026-07-03 08:35:20.960 +05:30 [INF] Executed endpoint 'MonthlyPremiumCalculator.API.Controller.OccupationController.GetOccupations (MonthlyPremiumCalculator.API)'
+2026-07-03 08:35:20.962 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5062/api/occupation - 200 null application/json; charset=utf-8 26.198ms
+2026-07-03 08:35:44.284 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5062/api/premium/calculate - null null
+2026-07-03 08:35:44.293 +05:30 [INF] CORS policy execution successful.
+2026-07-03 08:35:44.296 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5062/api/premium/calculate - 204 null null 12.0046ms
+2026-07-03 08:35:44.304 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5062/api/premium/calculate - application/json 100
+2026-07-03 08:35:44.311 +05:30 [INF] CORS policy execution successful.
+2026-07-03 08:35:44.312 +05:30 [INF] Executing endpoint 'PremiumController.Calculate (MonthlyPremiumCalculator.API)'
+2026-07-03 08:35:44.329 +05:30 [INF] Route matched with {action = "Calculate", controller = "Premium"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Calculate(PremiumRequestDto) on controller PremiumController (MonthlyPremiumCalculator.API).
+2026-07-03 08:35:44.405 +05:30 [INF] Premium calculation request received for sanjay
+2026-07-03 08:35:44.413 +05:30 [INF] Fetching occupation Mechanic
+2026-07-03 08:35:44.418 +05:30 [INF] Premium calculated successfully. Amount: 68580000.00
+2026-07-03 08:35:44.423 +05:30 [INF] Executing OkObjectResult, writing value of type 'MonthlyPremiumCalculator.Core.DTO.PremiumResponseDto'.
+2026-07-03 08:35:44.435 +05:30 [INF] Executed action PremiumController.Calculate (MonthlyPremiumCalculator.API) in 103.2432ms
+2026-07-03 08:35:44.439 +05:30 [INF] Executed endpoint 'PremiumController.Calculate (MonthlyPremiumCalculator.API)'
+2026-07-03 08:35:44.444 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5062/api/premium/calculate - 200 null application/json; charset=utf-8 140.1012ms
+2026-07-03 08:36:03.450 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5062/api/premium/calculate - null null
+2026-07-03 08:36:03.460 +05:30 [INF] CORS policy execution successful.
+2026-07-03 08:36:03.463 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5062/api/premium/calculate - 204 null null 12.5537ms
+2026-07-03 08:36:03.470 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5062/api/premium/calculate - application/json 99
+2026-07-03 08:36:03.475 +05:30 [INF] CORS policy execution successful.
+2026-07-03 08:36:03.477 +05:30 [INF] Executing endpoint 'PremiumController.Calculate (MonthlyPremiumCalculator.API)'
+2026-07-03 08:36:03.478 +05:30 [INF] Route matched with {action = "Calculate", controller = "Premium"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Calculate(PremiumRequestDto) on controller PremiumController (MonthlyPremiumCalculator.API).
+2026-07-03 08:36:03.486 +05:30 [INF] Premium calculation request received for sanjay
+2026-07-03 08:36:03.488 +05:30 [INF] Fetching occupation Cleaner
+2026-07-03 08:36:03.489 +05:30 [INF] Premium calculated successfully. Amount: 11040000.00
+2026-07-03 08:36:03.491 +05:30 [INF] Executing OkObjectResult, writing value of type 'MonthlyPremiumCalculator.Core.DTO.PremiumResponseDto'.
+2026-07-03 08:36:03.492 +05:30 [INF] Executed action PremiumController.Calculate (MonthlyPremiumCalculator.API) in 11.2945ms
+2026-07-03 08:36:03.494 +05:30 [INF] Executed endpoint 'PremiumController.Calculate (MonthlyPremiumCalculator.API)'
+2026-07-03 08:36:03.495 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5062/api/premium/calculate - 200 null application/json; charset=utf-8 25.2437ms
+2026-07-03 08:36:05.817 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5062/api/premium/calculate - application/json 98
+2026-07-03 08:36:05.824 +05:30 [INF] CORS policy execution successful.
+2026-07-03 08:36:05.826 +05:30 [INF] Executing endpoint 'PremiumController.Calculate (MonthlyPremiumCalculator.API)'
+2026-07-03 08:36:05.829 +05:30 [INF] Route matched with {action = "Calculate", controller = "Premium"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Calculate(PremiumRequestDto) on controller PremiumController (MonthlyPremiumCalculator.API).
+2026-07-03 08:36:05.836 +05:30 [INF] Premium calculation request received for sanjay
+2026-07-03 08:36:05.838 +05:30 [INF] Fetching occupation Doctor
+2026-07-03 08:36:05.842 +05:30 [INF] Premium calculated successfully. Amount: 1440000.0
+2026-07-03 08:36:05.844 +05:30 [INF] Executing OkObjectResult, writing value of type 'MonthlyPremiumCalculator.Core.DTO.PremiumResponseDto'.
+2026-07-03 08:36:05.847 +05:30 [INF] Executed action PremiumController.Calculate (MonthlyPremiumCalculator.API) in 14.7333ms
+2026-07-03 08:36:05.850 +05:30 [INF] Executed endpoint 'PremiumController.Calculate (MonthlyPremiumCalculator.API)'
+2026-07-03 08:36:05.852 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5062/api/premium/calculate - 200 null application/json; charset=utf-8 35.3281ms

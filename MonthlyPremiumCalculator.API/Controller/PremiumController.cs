@@ -7,14 +7,16 @@ public class PremiumController : ControllerBase
 {
     private readonly IPremiumService _service;
     private readonly ILogger<PremiumController> _logger;
-    public PremiumController(
-        IPremiumService service,
+
+    //Constructor injection of the IPremiumService and ILogger<PremiumController> dependencies
+    public PremiumController(IPremiumService service,
         ILogger<PremiumController> logger)
     {
         _service = service;
         _logger = logger;
     }
 
+    //Fetching the premium calculation request, validating it, and returning the calculated premium as a response
     [HttpPost("calculate")]
     public IActionResult Calculate(
         PremiumRequestDto request)
