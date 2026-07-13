@@ -21,7 +21,8 @@ public class PremiumController : ControllerBase
     public IActionResult Calculate(
         PremiumRequestDto request)
     {
-        
+        try
+        {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -47,6 +48,24 @@ public class PremiumController : ControllerBase
             premium);
 
         return Ok(response);
+        }
+        catch (ArgumentException ex)
+        {
+            _logger.LogWarning(
+                "Validation error calculating premium for {Name}: {Message}",
+                request?.Name,
+                ex.Message);
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "Unexpected error calculating premium for {Name}: {Message}",
+                request?.Name,
+                ex.Message);
+            return StatusCode(500, new { message = "An unexpected error occurred." });
+        }
     }
     
     [HttpGet("exception")]

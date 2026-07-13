@@ -207,16 +207,15 @@
                         JSON.stringify(request)
                 });
 
-            if (!response.ok) {
-
-                throw new Error(
-                    "Premium calculation failed.");
-            }
-
-            
             const result =
                 await response.json();
 
+            if (!response.ok) {
+                showError(
+                    result.message || 
+                    "Premium calculation failed.");
+                return;
+            }
 
             document.getElementById(
                 "premiumAmount"
@@ -260,6 +259,13 @@
             showError(
                 "All fields are mandatory.");
 
+            return false;
+        }
+
+        const ageNumber = parseInt(age);
+        if (ageNumber < 0) {
+            showError(
+                "Age cannot be negative.");
             return false;
         }
 
